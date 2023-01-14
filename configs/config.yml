@@ -1,1 +1,10 @@
-port: "8000"
+tcp:
+  port: "8000"
+
+db:
+  username: "postgres"
+  # password: "123456"
+  host: "localhost"
+  port: "5432"
+  dbname: "todo_DB"
+  sslmode: "disable"
