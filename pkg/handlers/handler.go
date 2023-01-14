@@ -3,6 +3,7 @@ package handler
 import (
 	"github.com/aleks-tim/todo-app/pkg/service"
 	"github.com/gin-gonic/gin"
+	// "github.com/sirupsen/logrus"
 )
 
 type Handler struct {
@@ -10,6 +11,7 @@ type Handler struct {
 }
 
 func NewHandler(services *service.Service) *Handler {
+	// logrus.Println("NewHandler()")
 	return &Handler{services: services}
 }
 

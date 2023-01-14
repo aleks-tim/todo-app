@@ -1,8 +1,13 @@
 package service
 
-import "github.com/aleks-tim/todo-app/pkg/repository"
+import (
+	"github.com/aleks-tim/todo-app"
+	"github.com/aleks-tim/todo-app/pkg/repository"
+	// "github.com/sirupsen/logrus"
+)
 
 type Autorization interface {
+	CreateUser(user todo.User) (int, error)
 }
 
 type TodoList interface {
@@ -17,6 +22,10 @@ type Service struct {
 	TodoItem
 }
 
-func NewService(repos *repository.Repository) *Service {
-	return &Service{}
+func NewService(repo *repository.Repository) *Service {
+	// logrus.Println("NewService()")
+
+	return &Service{
+		Autorization: NewAuthService(*repo),
+	}
 }
