@@ -44,10 +44,7 @@ func main() {
 
 	srv := new(todo.Server)
 	port := viper.GetString("tcp.port")
-	if err := srv.Run(port, handlers.InitRouters()); err != nil {
-		logrus.Fatalf("Error occured while running http server: %s", err.Error())
-	}
-
+	srv.Run(port, handlers.InitRouters())
 }
 
 func initConfig() error {
