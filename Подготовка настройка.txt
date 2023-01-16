@@ -1,0 +1,10 @@
+
+
+---------------------------------------------------------------------------------------------------------------------
+Migrate
+---------------------------------------------------------------------------------------------------------------------
+Set-ExecutionPolicy RemoteSigned -scope CurrentUser
+iwr -useb get.scoop.sh | iex
+scoop install migrate
+migrate -version
+migrate -path ./schema -database 'postgres://postgres:123456@localhost:5432/todo_DB?sslmode=disable' up

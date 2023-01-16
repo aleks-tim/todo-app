@@ -3,7 +3,6 @@ tcp:
 
 db:
   username: "postgres"
-  # password: "123456"
   host: "localhost"
   port: "5432"
   dbname: "todo_DB"
