@@ -5,13 +5,15 @@ import (
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/sirupsen/logrus"
 )
 
 type Server struct {
 	httpServer *http.Server
 }
 
-func (s *Server) Run(port string, handler http.Handler) error {
+func (s *Server) Run(port string, handler http.Handler) {
 	s.httpServer = &http.Server{
 		Addr:           ":" + port,
 		Handler:        handler,
@@ -21,7 +23,7 @@ func (s *Server) Run(port string, handler http.Handler) error {
 	}
 
 	log.Printf("HTTP Server start listen and serve at: %s ...", s.httpServer.Addr)
-	return s.httpServer.ListenAndServe()
+	logrus.Fatal(s.httpServer.ListenAndServe())
 }
 
 func (s *Server) Shutdown(ctx context.Context) error {
